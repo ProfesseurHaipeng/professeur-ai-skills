@@ -22,6 +22,8 @@ All notable public changes to this repository will be documented here.
 - Replaced the generated Skill placeholder with a concise, command-driven,
   read-only workflow.
 - Narrowed the repository's current public scope to one Agent Skill.
+- Treated Codex's host-specific `.codex/skills` install location as an
+  informational portability note instead of a strict-mode warning.
 - Marked remote installation as unverified until it is tested against a public
   release tag.
 

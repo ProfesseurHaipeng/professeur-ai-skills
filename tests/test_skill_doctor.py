@@ -268,6 +268,19 @@ class SkillDoctorTests(unittest.TestCase):
         self.assertEqual(discovery_finding.severity, "info")
         self.assertTrue(skill_doctor.audit_skill(copilot_skill, target="codex", strict=True).passed())
 
+        codex_root = self.root / ".codex"
+        codex_skill = write_skill(codex_root, name="codex-skill")
+        codex_host_report = skill_doctor.audit_skill(codex_skill, target="codex", strict=True)
+        self.assertTrue(codex_host_report.passed())
+        host_specific_finding = next(
+            item for item in codex_host_report.findings if item.id == "PSD-DISCOVERY-001"
+        )
+        self.assertEqual(host_specific_finding.severity, "info")
+
+        all_hosts_report = skill_doctor.audit_skill(codex_skill, target="all", strict=True)
+        self.assertTrue(all_hosts_report.passed())
+        self.assertIn("PSD-DISCOVERY-003", finding_ids(all_hosts_report))
+
     def test_world_writable_file_is_error(self) -> None:
         if os.name == "nt":
             self.skipTest("POSIX permissions required")

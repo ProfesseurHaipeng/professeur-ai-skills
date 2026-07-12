@@ -1303,7 +1303,7 @@ def _contains_directory_pair(parts: Sequence[str], first: str, second: str) -> b
 def _direct_discovery_targets(root: Path) -> tuple[set[str], set[str]]:
     parts = tuple(root.parts)
     direct: set[str] = set()
-    legacy: set[str] = set()
+    host_specific: set[str] = set()
     if _contains_directory_pair(parts, ".agents", "skills"):
         direct.update(("codex", "copilot"))
     if _contains_directory_pair(parts, ".github", "skills") or _contains_directory_pair(parts, ".claude", "skills"):
@@ -1311,8 +1311,8 @@ def _direct_discovery_targets(root: Path) -> tuple[set[str], set[str]]:
     if _contains_directory_pair(parts, ".copilot", "skills"):
         direct.add("copilot")
     if _contains_directory_pair(parts, ".codex", "skills"):
-        legacy.add("codex")
-    return direct, legacy
+        host_specific.add("codex")
+    return direct, host_specific
 
 
 def _is_publish_layout(root: Path) -> bool:
@@ -1328,16 +1328,16 @@ def _is_publish_layout(root: Path) -> bool:
 
 def _check_discovery_layout(root: Path, report: AuditReport) -> None:
     selected = {"codex", "copilot"} if report.target == "all" else {report.target}
-    direct, legacy = _direct_discovery_targets(root)
+    direct, host_specific = _direct_discovery_targets(root)
     for target in sorted(selected):
         if target in direct:
             continue
-        if target in legacy:
+        if target in host_specific:
             report.add(
                 "PSD-DISCOVERY-001",
-                "warning",
-                "Legacy discovery path",
-                "This path is recognized for compatibility, but .agents/skills is the current cross-runtime location.",
+                "info",
+                "Host-specific discovery path",
+                "This path is recognized by the selected host; .agents/skills is the current documented cross-runtime location.",
                 ".",
                 targets=(target,),
             )
