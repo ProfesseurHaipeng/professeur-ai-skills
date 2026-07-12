@@ -1,4 +1,0 @@
-interface:
-  display_name: "Shanhaijing Mythic Geography"
-  short_description: "Research Shanhaijing texts and mythic geography"
-  default_prompt: "Use $shanhaijing-mythic-geography to build a source-grounded mythic geography of the Shanhaijing without treating it as a literal modern map."

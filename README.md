@@ -7,16 +7,16 @@
 
 Small, inspectable Agent Skills with explicit limits and reproducible tests.
 
-The current research collection includes six independent, non-predictive humanities Skills:
+This repository is the audit and index project. Each research Skill is published in its own independent repository so it can be installed, versioned, and discovered separately:
 
-- `iching-research` — 易经、周易、六十四卦、爻辞 and reproducible casts.
-- `bazi-calendar-research` — 八字、干支、节气 and explicit calendar conventions.
-- `tarot-reading-research` — Tarot decks, spreads, cards, and reflective readings.
-- `western-astrology-research` — astrology separated from astronomy and sky facts.
-- `shanhaijing-mythic-geography` — 山海经 textual topology, creatures, versions, and map semantics.
-- `plato-myth-symbolism` — Platonic myths as argument-bearing literary and philosophical forms.
+- [I Ching Research](https://github.com/ProfesseurHaipeng/iching-research-skill)
+- [BaZi Calendar Research](https://github.com/ProfesseurHaipeng/bazi-calendar-research-skill)
+- [Tarot Reading Research](https://github.com/ProfesseurHaipeng/tarot-reading-research-skill)
+- [Western Astrology Research](https://github.com/ProfesseurHaipeng/western-astrology-research-skill)
+- [Shanhaijing Mythic Geography](https://github.com/ProfesseurHaipeng/shanhaijing-mythic-geography-skill)
+- [Plato Myth and Symbolism](https://github.com/ProfesseurHaipeng/plato-myth-symbolism-skill)
 
-They are designed for cultural research and reflective interpretation. They do not claim supernatural, medical, financial, or scientific predictive power.
+Each standalone repository has its own `SKILL.md`, references, runtime tools, tests, and release tag. They are designed for cultural research and reflective interpretation; they do not claim supernatural, medical, financial, or scientific predictive power.
 
 The first release is **Portable Skill Doctor**: a read-only static auditor that
 finds broken resources, unsafe path assumptions, undeclared requirements, and
