@@ -17,6 +17,10 @@ Read a Platonic myth as an argument-bearing literary form, not as a factual repo
 5. Compare at least two plausible readings. State what each explains and what it leaves unresolved.
 6. End with a reflective question or research path, not a deterministic moral or metaphysical verdict.
 
+## Research assets
+
+Use [dialogue-matrix.md](references/dialogue-matrix.md) to keep speaker, argument, myth, and reception separate. Use [interpretation-sheet.md](references/interpretation-sheet.md) when comparing readings.
+
 ## Scope examples
 
 - Cave: distinguish the image, education/turning language, political return, and later “simulation” adaptations.

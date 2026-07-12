@@ -17,6 +17,10 @@ Treat the 山海经 as a layered compilation of mythic geography, creatures, rit
 5. For a creature card, include name variants, original passage, attributes, habitat phrase, narrative function, later reception, and confidence label. Do not invent biological taxonomy.
 6. Explain version differences and translation choices. End with open research questions rather than claiming to have found the real Kunlun or a literal global map.
 
+## Research assets
+
+Read [entity-schema.md](references/entity-schema.md) before creating a graph or database, [creature-cards.md](references/creature-cards.md) before writing a beast entry, and [research-questions.md](references/research-questions.md) before proposing a modern map analogy.
+
 ## Design rules
 
 - Use arrows, rings, and regions for relationships that the text actually states; use dashed or clearly labeled lines for inference.
