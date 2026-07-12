@@ -8,7 +8,7 @@ runtime combination.
 ## Release candidate
 
 Date: 2026-07-12  
-Source commit: `04e8f7abe498b5e1cc728bb5c2f3835c1b5d4401`
+Source commit: `8e3bf4ee3c6b0c81d62f5a0686b154e21122f8cd`
 
 ### Environment
 
@@ -24,16 +24,17 @@ Source commit: `04e8f7abe498b5e1cc728bb5c2f3835c1b5d4401`
 
 | Path | Exact ref | Result | Evidence boundary |
 | --- | --- | --- | --- |
-| `gh skill preview` from the private remote | `04e8f7a` | Pass | The remote tree and instructions rendered without installation |
-| `gh skill install --agent codex --scope user` in a temporary home | `04e8f7a` | Pass | Installed to `~/.codex/skills/portable-skill-doctor`; strict self-audit passed with one informational host-path note |
-| `gh skill install --agent github-copilot --scope user` in a temporary home | `04e8f7a` | Pass | Installed to `~/.copilot/skills/portable-skill-doctor`; strict self-audit passed with no findings |
-| Local `gh skill publish --dry-run` | `04e8f7a` | Pass with one recommendation | Required Skill metadata validated; the CLI recommends a Skill-level license field while the repository uses an MIT root license |
-| Local `npx skills add . --list` discovery | pre-release tree | Pass | The CLI discovered `portable-skill-doctor`; this did not install from the public GitHub release |
-| Ubuntu GitHub Actions | `04e8f7a` | Pass | Unit, adversarial, public-scope, history, compile, and distribution-contract jobs passed |
+| Anonymous `gh skill preview` from the public remote | `8e3bf4e` | Pass | The remote tree and instructions rendered without installation or GitHub authentication |
+| Anonymous `gh skill install --agent codex --scope user` in a temporary home | `8e3bf4e` | Pass | Installed to `~/.codex/skills/portable-skill-doctor`; strict self-audit passed with one informational host-path note |
+| Anonymous `gh skill install --agent github-copilot --scope user` in a temporary home | `8e3bf4e` | Pass | Installed to `~/.copilot/skills/portable-skill-doctor`; strict self-audit passed with no findings |
+| Local `gh skill publish --dry-run` | `8e3bf4e` | Pass with one recommendation | Required Skill metadata validated; the CLI recommends a Skill-level license field while the repository uses an MIT root license |
+| Public `npx skills add` discovery and Codex project install | `main` at `8e3bf4e` | Pass | The CLI discovered and copied `portable-skill-doctor` to `.agents/skills`; strict self-audit passed |
+| Ubuntu GitHub Actions | `8e3bf4e` | Pass | Unit, adversarial, public-scope, history, compile, and distribution-contract jobs passed |
 
-Both temporary remote installations contained the same five Skill files. The
-installed auditor script was byte-identical across the Codex and Copilot
-destinations. The temporary home directories were deleted after verification.
+Both temporary `gh skill` installations contained the same five Skill files.
+The installed auditor script was byte-identical across the Codex and Copilot
+destinations. Temporary homes and the `npx skills` project fixture were deleted
+after verification.
 
 ## Behavior exercised
 

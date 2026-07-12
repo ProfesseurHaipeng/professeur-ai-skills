@@ -2,7 +2,7 @@
 
 All notable public changes to this repository will be documented here.
 
-## [Unreleased]
+## [0.1.0] - 2026-07-12
 
 ### Added
 
@@ -14,6 +14,7 @@ All notable public changes to this repository will be documented here.
 - Text, JSON, and SARIF output guidance.
 - Focused audit-rule and report-contract references.
 - Public-scope and independent-provenance records.
+- A tested-compatibility record with explicit evidence boundaries.
 - Forty-eight unit, adversarial, path, archive, and policy tests.
 - Read-only CI, history scanning, and deterministic release-archive gates.
 
@@ -24,8 +25,8 @@ All notable public changes to this repository will be documented here.
 - Narrowed the repository's current public scope to one Agent Skill.
 - Treated Codex's host-specific `.codex/skills` install location as an
   informational portability note instead of a strict-mode warning.
-- Marked remote installation as unverified until it is tested against a public
-  release tag.
+- Verified public remote preview and clean installation from an exact commit;
+  release-tag verification follows tag creation.
 
 ### Security
 
