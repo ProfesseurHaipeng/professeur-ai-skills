@@ -1,0 +1,4 @@
+interface:
+  display_name: "Eastern Divination Research"
+  short_description: "Research I Ching, stems, branches, and BaZi"
+  default_prompt: "Use $east-divination-research to explain an Eastern divination tradition with reproducible calendar steps, source provenance, and clear uncertainty boundaries."

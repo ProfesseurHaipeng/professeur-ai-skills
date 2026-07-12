@@ -7,6 +7,15 @@
 
 Small, inspectable Agent Skills with explicit limits and reproducible tests.
 
+The current research collection includes four non-predictive humanities Skills:
+
+- `east-divination-research` — 易经、干支、四柱八字 with reproducible calendar conventions.
+- `tarot-astrology-research` — Tarot and astrology, separated from astronomy and sky facts.
+- `shanhaijing-mythic-geography` — 山海经 textual topology, creatures, versions, and map semantics.
+- `plato-myth-symbolism` — Platonic myths as argument-bearing literary and philosophical forms.
+
+They are designed for cultural research and reflective interpretation. They do not claim supernatural, medical, financial, or scientific predictive power.
+
 The first release is **Portable Skill Doctor**: a read-only static auditor that
 finds broken resources, unsafe path assumptions, undeclared requirements, and
 host-portability risks before an Agent Skill is installed or published.
