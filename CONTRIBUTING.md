@@ -11,8 +11,10 @@ bringing private project material into the repository.
 - Do not add exact private project names to public deny rules or fixtures.
 - Keep examples generic and synthetic. Anonymization is not a substitute for
   permission when the underlying material is private.
-- An abstract companion or memory workflow must not provide professional
-  diagnosis, treatment, or health conclusions.
+
+Use the repository's issue forms for a minimal synthetic portability case or a
+new deterministic rule proposal. Security vulnerabilities belong in a private
+security advisory, not a public issue.
 
 ## Skill quality
 
@@ -48,5 +50,4 @@ python3 scripts/audit_release_archive.py path/to/source.zip
 ```
 
 Every error must be fixed. A passing scanner remains a structural check and
-does not replace review of scientific, legal, privacy, safety, or licensing
-claims.
+does not replace review of privacy, safety, or licensing claims.

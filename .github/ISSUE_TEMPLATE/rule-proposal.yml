@@ -1,0 +1,49 @@
+name: Deterministic rule proposal
+description: Propose one evidence-backed static check with a bounded remediation.
+title: "[rule] "
+labels:
+  - rule-proposal
+body:
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Public-scope confirmation
+      options:
+        - label: All examples are synthetic or explicitly licensed for public sharing.
+          required: true
+        - label: The proposal requires no target code execution or external service.
+          required: true
+  - type: textarea
+    id: condition
+    attributes:
+      label: Observable condition
+      description: Define the exact text, path, metadata, or file-state evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Why it matters
+      description: Separate specification failure, portability risk, and heuristic concern.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Positive and negative synthetic examples
+      description: Include one case that must trigger and one that must not.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Smallest remediation
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: False-positive and false-negative risks
+    validations:
+      required: true

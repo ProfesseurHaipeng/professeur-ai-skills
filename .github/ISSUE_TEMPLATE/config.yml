@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/ProfesseurHaipeng/professeur-ai-skills/security/advisories/new
+    about: Use a private advisory instead of disclosing a vulnerability publicly.
+  - name: Ask or discuss
+    url: https://github.com/ProfesseurHaipeng/professeur-ai-skills/discussions
+    about: Start a discussion when there is no minimal reproducible failure yet.
