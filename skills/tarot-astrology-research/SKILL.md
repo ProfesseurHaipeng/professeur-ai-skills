@@ -17,6 +17,10 @@ Treat Tarot and astrology as historical-cultural interpretive systems. Astronomy
 5. Compare at least two interpretive traditions when meanings differ. Make the reading reflective and conditional, with concrete next questions.
 6. Finish with a reality check: what can be observed, what is metaphor, and what evidence would challenge the interpretation.
 
+## Tools and references
+
+Use Python 3.10+ standard library only. Run `python3 scripts/transparent_spread.py --seed <visible-seed> --count 3` for a reproducible 78-card demonstration. Read [knowledge-model.md](references/knowledge-model.md) before designing a chart or spread schema, and [evaluation.md](references/evaluation.md) before discussing accuracy.
+
 ## Calculation and interpretation rules
 
 Use astronomy terminology correctly: a constellation is an observed sky region; a zodiac sign in a horoscope is a convention whose boundaries may not match current constellation boundaries. Explain precession when relevant. Do not say planets emit a proven personality force.

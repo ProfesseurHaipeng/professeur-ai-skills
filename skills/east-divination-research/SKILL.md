@@ -19,6 +19,10 @@ Never provide medical, legal, financial, safety, fertility, employment, or major
 5. Give a layered reading: textual observation, historical interpretation, symbolic reflection, alternative readings, and uncertainty. Ask the user to test reflections against lived evidence.
 6. End with falsifiable next actions: what to verify, what would change the interpretation, and what is outside the method's scope.
 
+## Tools and references
+
+Use Python 3.10+ standard library only. Run `python3 scripts/transparent_cast.py --seed <visible-seed> --method three-coins` for an inspectable six-line demonstration. Read [knowledge-model.md](references/knowledge-model.md) before designing data or UI, and [reading-grid.md](references/reading-grid.md) before producing an interpretation.
+
 ## Method notes
 
 ### I Ching / Zhouyi
