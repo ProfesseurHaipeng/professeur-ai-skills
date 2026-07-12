@@ -159,5 +159,7 @@ Preserve the exit status and machine output in automation.
 - [Security policy](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 
-If the auditor misses a reproducible structural or portability failure, open an
-issue with the smallest synthetic Skill that demonstrates it.
+If the auditor misses a reproducible structural or portability failure, use the
+[Portable Skill case form](https://github.com/ProfesseurHaipeng/professeur-ai-skills/issues/new?template=portable-skill-case.yml).
+If the example is not minimal yet, reduce it with the community in the
+[broken synthetic Skill challenge](https://github.com/ProfesseurHaipeng/professeur-ai-skills/discussions/4).
