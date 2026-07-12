@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portable Skill Doctor"
+  short_description: "Audit Agent Skills without running target code"
+  default_prompt: "Use $portable-skill-doctor to statically audit this Agent Skill for Codex and GitHub Copilot before installation; run the audit first and do not execute target scripts."
