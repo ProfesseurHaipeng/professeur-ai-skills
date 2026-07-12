@@ -164,6 +164,7 @@ class SkillDoctorTests(unittest.TestCase):
         (references / "guide-link.md").symlink_to("guide.md")
         report = skill_doctor.audit_skill(skill)
         self.assertNotIn("PSD-PATH-004", finding_ids(report))
+        self.assertNotIn("PSD-PERM-003", finding_ids(report))
         self.assertTrue(report.passed())
 
     def test_allowed_tools_list_and_shell_injection_are_rejected(self) -> None:

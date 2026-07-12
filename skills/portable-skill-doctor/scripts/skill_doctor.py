@@ -1394,10 +1394,10 @@ def audit_skill(skill_dir: str | os.PathLike[str], target: str = "all", strict: 
     entries = list(_iter_entries(root, report))
     files: list[Path] = []
     for path in entries:
-        _check_permissions(path, root, report)
         if path.is_symlink():
             _check_symlink(path, root, report)
             continue
+        _check_permissions(path, root, report)
         try:
             if path.is_file():
                 files.append(path)
