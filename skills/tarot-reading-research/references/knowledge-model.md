@@ -14,7 +14,7 @@ Never pass a sky fact directly into a personality or prediction claim.
 {"deck":"named edition","seed":"visible seed","draw":[{"card":"The Star","reversed":false}],"positions":["situation"],"interpretive_sources":[]}
 ```
 
-Use `scripts/transparent_spread.py` when a reproducible demonstration is requested. It does not claim that the draw is random in a metaphysical sense; it merely makes the software procedure inspectable.
+Use `../scripts/transparent_spread.py` when a reproducible demonstration is requested. It does not claim that the draw is random in a metaphysical sense; it merely makes the software procedure inspectable.
 
 ## Astrology record
 

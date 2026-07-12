@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tarot Reading Research"
+  short_description: "Research Tarot decks, spreads, cards, and interpretations"
+  default_prompt: "Use $tarot-reading-research to analyze a Tarot question with deck provenance, reproducible draw details, competing readings, and clear uncertainty."

@@ -23,20 +23,4 @@ Never collapse these layers into a single “answer” field. Keep the raw input
 }
 ```
 
-The six-line sequence must be explicit. Do not infer a relating hexagram unless changing lines are recorded. Do not generate a cast without a user-visible seed and method; use `scripts/transparent_cast.py` for a reproducible demonstration.
-
-## BaZi data shape
-
-```json
-{
-  "civil_time": "YYYY-MM-DDThh:mm:ss",
-  "timezone": "+08:00",
-  "location": "city, country",
-  "year_boundary": "立春",
-  "solar_term_source": "named ephemeris or table",
-  "pillars": null,
-  "calculation_status": "requires verified calendar implementation"
-}
-```
-
-The default is to refuse a pillar calculation when the boundary convention or ephemeris is missing. A plausible-looking chart is worse than an explicit unknown.
+The six-line sequence must be explicit. Do not infer a relating hexagram unless changing lines are recorded. Do not generate a cast without a user-visible seed and method; use `../scripts/transparent_cast.py` for a reproducible demonstration.
