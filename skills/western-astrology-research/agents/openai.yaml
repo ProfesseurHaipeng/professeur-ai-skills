@@ -1,4 +1,0 @@
-interface:
-  display_name: "Western Astrology Research"
-  short_description: "Separate astronomy calculations from astrological symbolism"
-  default_prompt: "Use $western-astrology-research to analyze a chart or zodiac question with explicit coordinates, ephemeris limits, cultural context, and uncertainty."
