@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tarot and Astrology Research"
+  short_description: "Separate tarot symbols, astrology calculations, and astronomy"
+  default_prompt: "Use $tarot-astrology-research to analyze a tarot or astrology question as cultural interpretation plus separately verifiable sky calculations."
