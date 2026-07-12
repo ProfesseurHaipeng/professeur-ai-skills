@@ -1,64 +1,87 @@
 # Professeur AI Skills
 
-A focused public repository for small, inspectable Agent Skills. The current
-public scope contains one skill: **Portable Skill Doctor**, an offline-first
-static auditor for Agent Skill structure and portability.
+[![CI](https://github.com/ProfesseurHaipeng/professeur-ai-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/ProfesseurHaipeng/professeur-ai-skills/actions/workflows/ci.yml)
+[![Security gates](https://github.com/ProfesseurHaipeng/professeur-ai-skills/actions/workflows/security.yml/badge.svg)](https://github.com/ProfesseurHaipeng/professeur-ai-skills/actions/workflows/security.yml)
+[![Latest release](https://img.shields.io/github/v/release/ProfesseurHaipeng/professeur-ai-skills)](https://github.com/ProfesseurHaipeng/professeur-ai-skills/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Small, inspectable Agent Skills with explicit limits and reproducible tests.
+
+The first release is **Portable Skill Doctor**: a read-only static auditor that
+finds broken resources, unsafe path assumptions, undeclared requirements, and
+host-portability risks before an Agent Skill is installed or published.
 
 It audits before it explains. It never executes scripts from the skill being
 audited.
 
-## Portable Skill Doctor
+## Why this exists
 
-`portable-skill-doctor` checks a target skill for:
+An Agent Skill can have valid-looking instructions and still fail after
+installation because a file is missing, a path escapes the package, a runtime
+is undeclared, or one host discovers it differently from another. Portable
+Skill Doctor turns those problems into deterministic findings with evidence,
+severity, and a bounded remediation.
 
-- Agent Skills structure and frontmatter problems;
-- broken, escaping, or machine-specific resource paths;
-- undeclared runtime, tool, permission, and network assumptions;
-- suspicious script behavior through static inspection only;
-- portability risks for Codex, GitHub Copilot, or both;
-- unsupported compatibility claims.
+| It checks | It deliberately does not do |
+| --- | --- |
+| `SKILL.md` structure, name, and trigger description | Execute, import, source, build, or test target code |
+| Referenced scripts, references, assets, and symlinks | Install dependencies or call external services |
+| Absolute, escaping, encoded, and machine-specific paths | Claim that a package is malware-free or safe |
+| Runtime, tool, permission, and network assumptions | Rewrite the target without a separate request |
+| Codex and GitHub Copilot discovery layouts | Claim compatibility beyond the tested matrix |
+| Conservative static execution-risk patterns | Replace sandboxing or human source review |
 
-The auditor can emit text, JSON, or SARIF. A report is evidence from a bounded
-static rule set, not a malware verdict or proof that a skill will run correctly.
+The auditor emits text, JSON, or SARIF and uses exit codes suitable for CI.
 
-## Install
+## Preview, then install
 
-### `npx skills`
+Requirements: GitHub CLI 2.90.0 or newer with `gh skill`, plus Python 3.10 or
+newer to run the bundled auditor.
 
-The intended repository install command is:
+Inspect the exact release before installation:
 
 ```bash
-npx skills add ProfesseurHaipeng/professeur-ai-skills \
+gh skill preview ProfesseurHaipeng/professeur-ai-skills \
+  portable-skill-doctor@v0.1.0
+```
+
+Install for Codex at user scope:
+
+```bash
+gh skill install ProfesseurHaipeng/professeur-ai-skills \
+  portable-skill-doctor@v0.1.0 \
+  --agent codex \
+  --scope user
+```
+
+Install for GitHub Copilot at user scope:
+
+```bash
+gh skill install ProfesseurHaipeng/professeur-ai-skills \
+  portable-skill-doctor@v0.1.0 \
+  --agent github-copilot \
+  --scope user
+```
+
+GitHub warns that third-party skills are not verified. Preview the tree and
+instructions before installing, even when a release is pinned.
+
+### Optional `npx skills` path
+
+```bash
+DISABLE_TELEMETRY=1 npx --yes skills add \
+  ProfesseurHaipeng/professeur-ai-skills \
   --skill portable-skill-doctor
 ```
 
-**Verification status:** this exact remote command must not be described as
-tested until the public repository and release tag exist and a clean install has
-been completed against that tag. The command follows the interface documented
-by the third-party [`skills` CLI](https://github.com/vercel-labs/skills); it is
-not itself evidence of compatibility with a particular agent version.
+This alternative uses the third-party
+[`skills` CLI](https://github.com/vercel-labs/skills). Review its installer and
+telemetry documentation before use.
 
-`npx skills` downloads code and writes to an agent skill directory. Its project
-documents anonymous telemetry and the `DISABLE_TELEMETRY=1` opt-out. Preview the
-source and understand the installer before using it.
+See the exact environments and bounded results in
+[Tested compatibility](docs/TESTED_COMPATIBILITY.md).
 
-### Manual copy
-
-Clone the repository, inspect the skill, then copy it into the user skill
-directory documented by your agent:
-
-```bash
-git clone https://github.com/ProfesseurHaipeng/professeur-ai-skills.git
-cd professeur-ai-skills
-mkdir -p "$HOME/.agents/skills"
-cp -R skills/portable-skill-doctor "$HOME/.agents/skills/"
-```
-
-Both current Codex and GitHub Copilot documentation describe
-`~/.agents/skills` as a user-level discovery location. Host behavior can change;
-verify discovery with the exact version you run.
-
-## Minimal use
+## Use it
 
 Invoke the installed skill:
 
@@ -67,7 +90,7 @@ Use $portable-skill-doctor to audit ./skills/example-skill for Codex and
 GitHub Copilot. Run the audit first and never execute the target's scripts.
 ```
 
-Or run the bundled auditor directly from this repository:
+Or run the deterministic auditor directly:
 
 ```bash
 python3 skills/portable-skill-doctor/scripts/skill_doctor.py \
@@ -80,39 +103,61 @@ python3 skills/portable-skill-doctor/scripts/skill_doctor.py \
 Choose `--target codex`, `--target copilot`, or `--target all`. Choose
 `--format text`, `--format json`, or `--format sarif`.
 
+## Example finding set
+
+```text
+portable-skill-doctor 0.1.0
+Target: all | Strict: yes | Result: FAIL
+Findings: 2 error, 1 warning, 0 info
+ERROR   PSD-PATH-003 SKILL.md:12 - Parent traversal is not allowed.
+ERROR   PSD-RESOURCE-001 SKILL.md:11 - Referenced resource does not exist.
+WARNING PSD-SCRIPT-001 SKILL.md - Bundled scripts have no declared runtime.
+```
+
+Finding IDs, severities, paths, and line numbers are stable machine evidence.
+The report is not a verdict about whether a target is trustworthy.
+
 ## Network and permissions
 
 | Operation | Network | Target-skill access | Writes |
 | --- | --- | --- | --- |
-| Bundled static audit | Not required | Read-only | Standard output only unless the caller redirects it |
+| Bundled static audit | Not required | Read-only | Standard output only unless redirected |
 | Manual evidence review | Not required | Read-only text inspection | None |
-| `npx skills add` | Required for remote install | Installer-controlled | Agent skill directory and installer metadata |
-| `git clone` + manual copy | Required only for clone | Read source before copying | Chosen skill directory |
+| `gh skill preview` | Required for remote source | Read-only remote fetch | None to the skill directory |
+| `gh skill install` | Required for remote source | Installer-controlled | Selected agent skill directory and install metadata |
+| `npx skills add` | Required for remote source | Installer-controlled | Selected agent skill directory and installer metadata |
 
 The audit workflow does not need credentials and should not be given any. It
 must not run, import, source, install, build, or test code from the target skill.
 
-## Output
+## Exit codes
 
-- **Text** for direct review.
-- **JSON** for deterministic downstream processing.
-- **SARIF** for compatible code-scanning and CI consumers.
+| Code | Meaning |
+| --- | --- |
+| `0` | No errors; in strict mode, no warnings |
+| `1` | Findings failed the selected policy |
+| `2` | Input or audit failure |
+| `3` | Command-line usage error |
 
-Strict mode is intended for pre-install and pre-publish gates. Preserve the
-auditor's exit status and machine output in automation.
+Preserve the exit status and machine output in automation.
 
 ## Limits
 
 - Static rules can produce false positives and false negatives.
 - The auditor cannot prove that code is benign, correct, or sandbox-safe.
-- It does not execute target code, tests, installers, hooks, or dependencies.
-- It does not validate external services, credentials, remote URLs, or live
+- It does not validate credentials, remote URLs, external services, or live
   model behavior.
-- Portability analysis is currently scoped to Codex and GitHub Copilot.
 - A structurally portable package can still behave differently across host and
   version combinations.
-- Compatibility is claimed only after a named host/version and installation
-  path have been tested and recorded.
+- Compatibility is claimed only for the named environments in the test record.
 
-See [public scope](docs/PUBLIC_SCOPE.md) and
-[inspiration and provenance](docs/INSPIRATION_AND_PROVENANCE.md).
+## Project records
+
+- [Public scope](docs/PUBLIC_SCOPE.md)
+- [Tested compatibility](docs/TESTED_COMPATIBILITY.md)
+- [Inspiration and provenance](docs/INSPIRATION_AND_PROVENANCE.md)
+- [Security policy](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+
+If the auditor misses a reproducible structural or portability failure, open an
+issue with the smallest synthetic Skill that demonstrates it.
