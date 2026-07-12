@@ -2,6 +2,13 @@
 
 All notable public changes to this repository will be documented here.
 
+## [Unreleased]
+
+### Documentation
+
+- Recorded the completed `v0.1.0` release audit and anonymous tag-level install
+  verification.
+
 ## [0.1.0] - 2026-07-12
 
 ### Added

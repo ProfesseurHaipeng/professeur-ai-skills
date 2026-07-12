@@ -5,10 +5,12 @@ successful install proves that the selected tree was fetched and placed in the
 expected host directory. It does not prove every prompt, model, permission, or
 runtime combination.
 
-## Release candidate
+## Release
 
-Date: 2026-07-12  
-Source commit: `8e3bf4ee3c6b0c81d62f5a0686b154e21122f8cd`
+- Date: 2026-07-12
+- Release tag: `v0.1.0`
+- Release commit: `cbe33351f47dae0dd36a9acd71c903ea90935cc7`
+- Pre-release distribution commit: `8e3bf4ee3c6b0c81d62f5a0686b154e21122f8cd`
 
 ### Environment
 
@@ -30,6 +32,8 @@ Source commit: `8e3bf4ee3c6b0c81d62f5a0686b154e21122f8cd`
 | Local `gh skill publish --dry-run` | `8e3bf4e` | Pass with one recommendation | Required Skill metadata validated; the CLI recommends a Skill-level license field while the repository uses an MIT root license |
 | Public `npx skills add` discovery and Codex project install | `main` at `8e3bf4e` | Pass | The CLI discovered and copied `portable-skill-doctor` to `.agents/skills`; strict self-audit passed |
 | Ubuntu GitHub Actions | `8e3bf4e` | Pass | Unit, adversarial, public-scope, history, compile, and distribution-contract jobs passed |
+| Anonymous Codex and GitHub Copilot clean installs | `v0.1.0` at `cbe3335` | Pass | Both pinned installs passed strict self-audit; installed auditor SHA-256 was `6204911da57f71c0642d49cf2076e8c552bf7807b12473808db8093c517eb390` |
+| Tag-triggered Release audit | `v0.1.0` at `cbe3335` | Pass | Tests, scope gate, Skill contract, deterministic archive build, archive inspection, and checksum completed on Ubuntu |
 
 Both temporary `gh skill` installations contained the same five Skill files.
 The installed auditor script was byte-identical across the Codex and Copilot
@@ -53,9 +57,8 @@ after verification.
 - implicit invocation quality across models and prompts;
 - behavior on Windows or Linux desktop hosts;
 - absence of every malicious or unsafe pattern;
-- release-tag installation, until the public `v0.1.0` tag is created and the
-  same clean-install matrix is rerun against that tag.
+- behavior of future installer or host versions not listed above.
 
-The release notes record the tag-level verification performed after
+The release notes also record the tag-level verification performed after
 publication. Re-run the matrix whenever the Skill code, installer behavior, or
 documented discovery paths change.
