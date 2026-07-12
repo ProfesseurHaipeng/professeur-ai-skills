@@ -7,10 +7,12 @@
 
 Small, inspectable Agent Skills with explicit limits and reproducible tests.
 
-The current research collection includes four non-predictive humanities Skills:
+The current research collection includes six independent, non-predictive humanities Skills:
 
-- `east-divination-research` — 易经、干支、四柱八字 with reproducible calendar conventions.
-- `tarot-astrology-research` — Tarot and astrology, separated from astronomy and sky facts.
+- `iching-research` — 易经、周易、六十四卦、爻辞 and reproducible casts.
+- `bazi-calendar-research` — 八字、干支、节气 and explicit calendar conventions.
+- `tarot-reading-research` — Tarot decks, spreads, cards, and reflective readings.
+- `western-astrology-research` — astrology separated from astronomy and sky facts.
 - `shanhaijing-mythic-geography` — 山海经 textual topology, creatures, versions, and map semantics.
 - `plato-myth-symbolism` — Platonic myths as argument-bearing literary and philosophical forms.
 

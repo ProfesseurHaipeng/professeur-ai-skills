@@ -1,0 +1,4 @@
+interface:
+  display_name: "I Ching Research"
+  short_description: "Research hexagrams, line texts, casts, and interpretations"
+  default_prompt: "Use $iching-research to explain an I Ching question with a reproducible cast, primary-text provenance, competing readings, and clear uncertainty boundaries."

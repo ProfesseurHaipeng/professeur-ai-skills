@@ -1,0 +1,4 @@
+interface:
+  display_name: "BaZi Calendar Research"
+  short_description: "Research BaZi labels, solar terms, and calendar conventions"
+  default_prompt: "Use $bazi-calendar-research to analyze a BaZi or Chinese-calendar question with explicit conventions, reproducible labels, source provenance, and uncertainty."
